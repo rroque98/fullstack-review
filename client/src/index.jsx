@@ -18,22 +18,22 @@ class App extends React.Component {
     // TODO
     $.ajax({
       method: "POST",
-      url: "http://localhost:1128/repos",
+      url: "/repos",
       contentType: "application/json",
-      data: term,
+      data: JSON.stringify(term),
       success: function(data) {
         console.log('search successful');
         // initiate GET request
-        $.ajax({
-          method: 'GET',
-          url: "something...",
-          success: function(data) {
-            console.log('GET REQUEST successful');
-          },
-          error: function(err) {
-            console.log('unsuccessful GET request');
-          }
-        })
+        // $.ajax({
+        //   method: 'GET',
+        //   url: "something...",
+        //   success: function(data) {
+        //     console.log('GET REQUEST successful');
+        //   },
+        //   error: function(err) {
+        //     console.log('unsuccessful GET request');
+        //   }
+        // })
       },
       error: function(err) {
         console.log('unsuccessful search');

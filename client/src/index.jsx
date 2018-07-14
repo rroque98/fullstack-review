@@ -37,16 +37,17 @@ class App extends React.Component {
       success: function(data) {
         console.log('search successful');
         // initiate GET request
-        // $.ajax({
-        //   method: 'GET',
-        //   url: "something...",
-        //   success: function(data) {
-        //     console.log('GET REQUEST successful');
-        //   },
-        //   error: function(err) {
-        //     console.log('unsuccessful GET request');
-        //   }
-        // })
+        $.ajax({
+          method: 'GET',
+          url: "/top25",
+          success: function(data) {
+            console.log(data)
+            console.log('GET REQUEST successful');
+          },
+          error: function(err) {
+            console.log('unsuccessful GET request');
+          }
+        })
       },
       error: function(err) {
         console.log('unsuccessful search');

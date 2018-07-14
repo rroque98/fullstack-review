@@ -27,8 +27,9 @@ app.post('/repos', function (req, res) {
   });
 });
 
-app.get('/repos', function (req, res) {
+app.get('/top25', function (req, res) {
   // TODO - your code here!
+  res.send('yayyy')
   // This route should send back the top 25 repos
 });
 

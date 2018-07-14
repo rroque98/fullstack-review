@@ -32,7 +32,7 @@ let getReposByUsername = (username, cb/* TODO */) => {
       }
       customRepoArr.push(customRepo);
     });
-    console.log('custom repos here', customRepoArr)
+    // console.log('custom repos here', customRepoArr)
     cb(null, customRepoArr);
 
   // if (!error && response.statusCode == 200) {
@@ -40,9 +40,8 @@ let getReposByUsername = (username, cb/* TODO */) => {
   //   console.log(info.s + " Stars");
   //   console.log(info.forks_count + " Forks");
   // }
-}
+  }
 request(options, callback);
-
 }
 
 module.exports.getReposByUsername = getReposByUsername;

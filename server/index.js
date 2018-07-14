@@ -13,12 +13,13 @@ app.post('/repos', function (req, res) {
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // console.log('req debugging:', req.body.username)
-  githubHelper.getReposByUsername(req.body.username, function(err, repoResults) {
+  githubHelper.getReposByUsername(req.body.username, (err, repoResults) => {
     if (err) {
       res.send('error in posting!');
     } else {
-      console.log('this should be correct repos:', repoResults);
+      // console.log('this should be correct repos:', repoResults);
       // save the repo information in the database
+      db.find
       db.save(repoResults);
 
       res.send('successful post!')

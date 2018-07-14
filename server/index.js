@@ -1,14 +1,29 @@
 const express = require('express');
 let app = express();
+var bodyParser = require('body-parser')
+var githubHelper = require('../helpers/github');
+var db = require('../database/index');
 
 app.use(express.static(__dirname + '/../client/dist'));
+app.use(bodyParser.json());
 
 app.post('/repos', function (req, res) {
   // TODO - your code here!
-  res.send('hola');
+  // res.send('hola');
   // This route should take the github username provided
   // and get the repo information from the github API, then
-  // save the repo information in the database
+  // console.log('req debugging:', req.body.username)
+  githubHelper.getReposByUsername(req.body.username, function(err, repoResults) {
+    if (err) {
+      res.send('error in posting!');
+    } else {
+      console.log('this should be correct repos:', repoResults);
+      // save the repo information in the database
+      db.save(repoResults);
+
+      res.send('successful post!')
+    }
+  });
 });
 
 app.get('/repos', function (req, res) {

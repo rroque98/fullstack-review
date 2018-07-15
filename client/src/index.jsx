@@ -11,24 +11,10 @@ class App extends React.Component {
     this.state = { 
       repos: []
     }
-    // this.search = this.search.bind(this);
+    // this.handleGetData = this.handleGetData.bind(this);
   }
-
   search (term) {
     console.log(`${term} was searched`);
-    // TODO
-  // axios.post('/repos', {
-  //     username: term
-  //   })
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
-    // $.post( "/repos", function( data ) {
-    //   console.log(data);
-    // });
     $.ajax({
       type: "POST",
       url: "/repos",
@@ -41,12 +27,13 @@ class App extends React.Component {
           method: 'GET',
           url: "/top25",
           success: function(data) {
+            // console.log(this.state.repos)
             // this.setState({
             //   repos: data
             // })
-            console.log(this);
-            console.log(data)
-            console.log('GET REQUEST successful');
+            // console.log(this);
+            // console.log(data)
+            // console.log('GET REQUEST successful');
           },
           error: function(err) {
             console.log('unsuccessful GET request');
@@ -56,6 +43,24 @@ class App extends React.Component {
       error: function(err) {
         console.log('unsuccessful search');
       }
+    });
+  }
+  componentDidMount() {
+    $.ajax({
+      method: 'GET',
+      url: "/top25",
+      success: function(data) {
+        console.log(Array.isArray(data))
+        this.setState({repos: data});
+      }.bind(this),
+      error: function(err) {
+        console.log('unsuccessful GET request');
+      }
+    });
+  }
+  handleGetData(data) {
+    this.setState({
+      repos: data
     });
   }
 

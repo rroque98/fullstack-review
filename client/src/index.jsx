@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = { 
       repos: []
     }
-
+    // this.search = this.search.bind(this);
   }
 
   search (term) {
@@ -41,6 +41,10 @@ class App extends React.Component {
           method: 'GET',
           url: "/top25",
           success: function(data) {
+            // this.setState({
+            //   repos: data
+            // })
+            console.log(this);
             console.log(data)
             console.log('GET REQUEST successful');
           },
